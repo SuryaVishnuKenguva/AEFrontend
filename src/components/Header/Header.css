@@ -1,0 +1,170 @@
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(31, 30, 30);
+  color: white;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
+  justify-content: space-around;
+  transition: top 0.3s, height 0.3s;
+}
+
+.Header.hidden {
+  top: -140px;
+}
+
+.Header.visible {
+  top: 0;
+}
+
+.top-H {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(63, 62, 62);
+  transition: opacity 0.3s, height 0.3s;
+}
+
+.top-H.hidden {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.top-H.visible {
+  opacity: 1;
+  height: auto;
+}
+
+.top-H > :nth-child(1) {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.top-H > :nth-child(1) img {
+  width: 20px;
+  background-color: #23262d;
+  border-radius: 4px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0px 0px 1px white;
+  transition: all 0.5s;
+}
+.top-H > :nth-child(1) img:hover {
+  cursor: pointer;
+  background-color: red;
+  box-shadow: 0px 0px 1px red;
+}
+.top-H > :nth-child(1) span:hover {
+  color: red;
+}
+.top-H > :nth-child(1) span {
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.5s;
+}
+.top-H > :nth-child(2) {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  align-items: center;
+}
+.top-H > :nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #23262d;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 0px 0px 1px white;
+}
+.top-H > :nth-child(2) > div:hover {
+  box-shadow: 0px 0px 1px red;
+}
+.top-H > :nth-child(2) > div img {
+  width: 20px;
+  background-color: black;
+  padding: 2px;
+}
+.link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s;
+  position: relative;
+}
+.link:hover {
+  cursor: pointer;
+  color: red;
+}
+.link.active {
+  color: red;
+}
+.drop {
+  visibility: hidden;
+  position: absolute;
+  background-color: rgb(31, 30, 30);
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  box-shadow: 0px 0px 1px red;
+}
+.link2 {
+  text-decoration: none;
+  color: white;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  padding-right: 15px;
+  background-color: rgb(31, 30, 30);
+}
+.link2:hover {
+  color: red;
+  background-color: black;
+}
+.link2.active {
+  color: red;
+}
+.link:hover .drop {
+  visibility: visible;
+}
+.bottom-H {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-H > div {
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.bottom-H > div > span {
+  transition: all 0.5s;
+}
+.bottom-H > div > span:hover {
+  color: red;
+  cursor: pointer;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  left: 41%;
+}
+.logo img {
+  width: 240px;
+  filter: drop-shadow(0px 0px 2px white);
+}
