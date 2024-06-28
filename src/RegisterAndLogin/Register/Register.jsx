@@ -5,6 +5,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errormsg,setErrormsg]=useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -14,10 +15,9 @@ const Register = () => {
         { name, email, password },
         { withCredentials: true }
       );
-      console.log(res.data.message);
       window.location.href = "/signin";
     } catch (err) {
-      console.log(err);
+      setErrormsg(err.response.data.error);
     }
   };
   return (
@@ -40,6 +40,7 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button>Register</button>
+        {errormsg && <p>{errormsg}</p>}
       </form>
     </div>
   );

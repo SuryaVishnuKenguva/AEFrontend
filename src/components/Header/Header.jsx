@@ -9,6 +9,8 @@ import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
+
 const Header = () => {
   const [headerHeight, setHeaderHeight] = useState(140);
   const [showTop, setShowTop] = useState(true);
@@ -25,7 +27,7 @@ const Header = () => {
           });
           setName(res.data.user.name);
         } else {
-          console.log("token");
+          console.log("You are not Authorized");
         }
       } catch (err) {
         console.log(err);

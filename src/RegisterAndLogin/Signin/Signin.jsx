@@ -4,6 +4,7 @@ import axios from "axios";
 const Signin = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const [errormsg,setErrormsg]=useState("");
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const Signin = () => {
         window.location.href = "/";
       }
     } catch (err) {
-      console.log(err);
+      setErrormsg(err.response.data.error);
     }
   };
   return (
@@ -31,12 +32,13 @@ const Signin = () => {
           required
         />
         <input
-          type="text"
+          type="password"
           placeholder="Enter your password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit">Sign In</button>
+        {errormsg && <p>{errormsg}</p>}
       </form>
     </div>
   );
