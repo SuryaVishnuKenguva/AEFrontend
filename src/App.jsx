@@ -9,6 +9,7 @@ import Register from "./RegisterAndLogin/Register/Register";
 import Contact from "./pages/Contact/Contact";
 import Ongoing from "./pages/Tournament/OnGoing/Ongoing";
 import Upcoming from "./pages/Tournament/Upcoming/Upcoming";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const App = () => {
       path: "/register",
       element: <Register />,
     },
+    {
+      path:"/profile",
+      element:<Profile/>
+    }
   ]);
 
   return <RouterProvider router={router} />;

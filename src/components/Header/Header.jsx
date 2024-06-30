@@ -4,19 +4,37 @@ import fb from "../../assets/icons/fb.png";
 import ig from "../../assets/icons/ig.png";
 import ds from "../../assets/icons/ds.png";
 import yt from "../../assets/icons/yt.png";
+import pf from "../../assets/icons/Profile.png"
 import write from "../../assets/icons/write.png";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { motion } from "framer-motion"
 
 const Header = () => {
   const [headerHeight, setHeaderHeight] = useState(140);
   const [showTop, setShowTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
   const [name, setName] = useState("");
+
+  const marqueeVariants = {
+    animate: {
+      x: ["150px", `-${(screenWidth / 2) - 100}px`],
+      transition: {
+        x: {
+          duration: 6,
+          ease: "linear",
+          repeat: Infinity,
+          repeatType: "loop",
+        },
+      },
+    },
+  };
+
   useEffect(() => {
     const getName = async () => {
       try {
@@ -57,6 +75,22 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
+
   return (
     <div className="Header" style={{ height: `${headerHeight}px` }}>
       {showTop && (
@@ -69,7 +103,18 @@ const Header = () => {
             <img src={yt} alt="YouTube" />
           </div>
           {name ? (
-            <p>Hello, {name}</p>
+            screenWidth >= 1024 ? (
+              <motion.p
+                variants={marqueeVariants}
+                initial="initial"
+                animate="animate"
+                style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}
+              >
+                Hello, {name}
+              </motion.p>
+            ) : (
+              <p style={{ position: 'sticky', top: 0 }}>Hello, {name}</p>
+            )
           ) : (
             <div>
               <div onClick={() => navigate("/register")}>
@@ -113,7 +158,19 @@ const Header = () => {
           <span>PAGES</span>
           <span>STORE</span>
           <span>BLOG</span>
-          <span>COMMUNITY</span>
+          {name ? (
+            <NavLink className="link-profile" to="/profile">
+              <div className="profile">
+                <img src={pf} alt="" />
+                <span>{name.split(" ")[0].toUpperCase()}</span>
+              </div>
+            </NavLink>
+
+          ) :
+            <NavLink to="/signin" className="link">
+              <span>PROFILE</span>
+            </NavLink>
+          }
         </div>
       </div>
       <div className="logo">
