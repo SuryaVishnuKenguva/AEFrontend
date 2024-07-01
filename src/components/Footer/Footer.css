@@ -1,0 +1,117 @@
+.Footer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+  gap: 30px;
+}
+.footer {
+  display: flex;
+  justify-content: space-around;
+}
+.f1 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.f1 > :nth-child(2) {
+  font-size: 18px;
+  font-weight: 900;
+  width: 300px;
+}
+.f1 > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+}
+.f1 > :nth-child(1) {
+  width: 120px;
+}
+.f1 img {
+  width: 20px;
+}
+.f2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.f2 > :nth-child(1) {
+  margin-bottom: 10px;
+  margin-top: 100px;
+  font-size: 20px;
+  font-weight: 900;
+  color: red;
+}
+.f3 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.f3 > :nth-child(1) {
+  margin-bottom: 10px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.f3 > :nth-child(1) > span {
+  font-size: 20px;
+  font-weight: 900;
+  color: red;
+}
+.f3 > :nth-child(1) > div {
+  display: flex;
+  gap: 15px;
+}
+.f3 > :nth-child(1) img {
+  width: 20px;
+  background-color: #23262d;
+  border-radius: 4px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0px 0px 1px white;
+  transition: all 0.5s;
+}
+.f3 > :nth-child(1) img:hover {
+  cursor: pointer;
+  background-color: red;
+  box-shadow: 0px 0px 1px red;
+}
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid red;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px red;
+}
+.subscribe input {
+  width: 200px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid white;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+}
+.subscribe button {
+  background-color: transparent;
+  padding: 8px 10px;
+  color: white;
+  font-weight: 900;
+  font-size: 11px;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+.subscribe button:hover {
+  border: 1px solid red;
+}
+::placeholder {
+  color: rgb(199, 197, 197);
+  letter-spacing: 1px;
+}

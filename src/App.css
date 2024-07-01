@@ -2,4 +2,7 @@ body {
   font-family: "Oxanium", sans-serif;
   font-weight: 400;
   font-style: normal;
+  background-color: rgb(31, 30, 30);
+  color: white;
+  overflow-x: hidden;
 }

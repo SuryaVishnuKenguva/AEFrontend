@@ -13,6 +13,7 @@
   padding-right: 15px;
   justify-content: space-around;
   transition: top 0.3s, height 0.3s;
+  z-index: 100;
 }
 
 .Header.hidden {
@@ -99,7 +100,8 @@
   background-color: black;
   padding: 2px;
 }
-.link ,.link-profile{
+.link,
+.link-profile {
   color: white;
   text-decoration: none;
   transition: all 0.5s;
@@ -118,16 +120,18 @@
   background-color: rgb(31, 30, 30);
   display: flex;
   flex-direction: column;
-  width: 100px;
-  box-shadow: 0px 0px 1px red;
+  width: 150px;
+  padding-right: 5px;
+  border: 1px solid red;
+  box-shadow: 0px 0px 5px red;
 }
 .link2 {
   text-decoration: none;
   color: white;
-  color: white;
   width: 100%;
-  padding: 10px;
-  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
   background-color: rgb(31, 30, 30);
 }
 .link2:hover {
@@ -138,6 +142,27 @@
   color: red;
 }
 .link:hover .drop {
+  visibility: visible;
+}
+.drop2 {
+  visibility: hidden;
+  position: absolute;
+  background-color: rgb(31, 30, 30);
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding-right: 5px;
+  border: 1px solid red;
+  gap: 15px;
+  width: 200px;
+  right: -35px;
+  box-shadow: 0px 0px 5px red;
+  overflow: hidden;
+}
+.drop2 .link2 {
+  color: white;
+}
+.link-profile:hover .drop2 {
   visibility: visible;
 }
 .bottom-H {
@@ -170,18 +195,20 @@
   filter: drop-shadow(0px 0px 2px white);
 }
 
-.profile{
+.profile {
   display: flex;
-  gap:5px;
+  gap: 5px;
   border: 1px solid white;
   padding: 5px 10px;
   align-items: center;
   border-radius: 20px;
+  border: none;
   margin-top: -8px;
 }
-.profile img{
-  width:20px;
+.profile img {
+  width: 20px;
 }
-.link-profile.active .profile{
+
+.link-profile.active .profile {
   background-color: red;
 }
