@@ -4,14 +4,14 @@ import fb from "../../assets/icons/fb.png";
 import ig from "../../assets/icons/ig.png";
 import ds from "../../assets/icons/ds.png";
 import yt from "../../assets/icons/yt.png";
-import pf from "../../assets/icons/Profile.png"
+import pf from "../../assets/icons/Profile.png";
 import write from "../../assets/icons/write.png";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Cookies from 'js-cookie';
-import { motion } from "framer-motion"
+import Cookies from "js-cookie";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [headerHeight, setHeaderHeight] = useState(140);
@@ -23,7 +23,7 @@ const Header = () => {
 
   const marqueeVariants = {
     animate: {
-      x: ["150px", `-${(screenWidth / 2) - 100}px`],
+      x: ["150px", `-${screenWidth / 2 - 100}px`],
       transition: {
         x: {
           duration: 6,
@@ -108,12 +108,12 @@ const Header = () => {
                 variants={marqueeVariants}
                 initial="initial"
                 animate="animate"
-                style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}
+                style={{ whiteSpace: "nowrap", overflow: "hidden" }}
               >
                 Hello, {name}
               </motion.p>
             ) : (
-              <p style={{ position: 'sticky', top: 0 }}>Hello, {name}</p>
+              <p style={{ position: "sticky", top: 0 }}>Hello, {name}</p>
             )
           ) : (
             <div>
@@ -164,13 +164,29 @@ const Header = () => {
                 <img src={pf} alt="" />
                 <span>{name.split(" ")[0].toUpperCase()}</span>
               </div>
+              <div className="drop2">
+                <NavLink to="" className="link2">
+                  My Profile
+                </NavLink>
+                <NavLink to="" className="link2">
+                  Manage Teams
+                </NavLink>
+                <NavLink to="" className="link2">
+                  Saved Payments
+                </NavLink>
+                <NavLink to="" className="link2">
+                  My Tournaments
+                </NavLink>
+                <NavLink to="" className="link2">
+                  My Favourites
+                </NavLink>
+              </div>
             </NavLink>
-
-          ) :
+          ) : (
             <NavLink to="/signin" className="link">
               <span>PROFILE</span>
             </NavLink>
-          }
+          )}
         </div>
       </div>
       <div className="logo">
