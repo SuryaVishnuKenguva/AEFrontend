@@ -8,8 +8,18 @@ import MyFavourite from "./My-Favourites/MyFavourite";
 import "./Profile.css";
 import UserProfile from "./User-Profile/UserProfile";
 import Footer from "../../components/Footer/Footer";
+import { useData } from "../../Context/DataContext";
+import { useNavigate } from "react-router-dom";
+
 const Profile = () => {
   const [sections, setSections] = useState(1);
+  const {user,logOut}=useData();
+  const navigate=useNavigate();
+
+  const handleLogout=()=>{
+    logOut();
+    navigate("/")
+}
   const handleSections = (prop) => {
     setSections(prop);
   };
@@ -28,7 +38,7 @@ const Profile = () => {
             <img src={pf} alt="" />
             <div>
               <span>Hello,</span>
-              <span>Username</span>
+              <span>{user.name}</span>
             </div>
           </div>
           <div className="p-sections">
@@ -54,7 +64,7 @@ const Profile = () => {
                 onClick={() => handleSections(4)}
                 style={{ backgroundColor: sections === 4 ? "red" : "" }}
               >
-                My Payments
+                My Tournaments
               </div>
               <div
                 className="myfavourites"
@@ -63,8 +73,9 @@ const Profile = () => {
               >
                 My Favourites
               </div>
+              
             </div>
-            <div>Logout</div>
+            <div onClick={handleLogout}>Logout</div>
           </div>
         </div>
         <div className="right-p">

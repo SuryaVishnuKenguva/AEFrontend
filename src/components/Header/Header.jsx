@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { motion } from "framer-motion";
+import { useData } from "../../Context/DataContext";
 
 const Header = () => {
   const [headerHeight, setHeaderHeight] = useState(140);
@@ -20,6 +21,10 @@ const Header = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const {user,logOut}=useData();
+  useEffect(()=>{
+    setName(user.name)
+  })
 
   const marqueeVariants = {
     animate: {
@@ -35,24 +40,11 @@ const Header = () => {
     },
   };
 
-  useEffect(() => {
-    const getName = async () => {
-      try {
-        const token = Cookies.get("token");
-        if (token) {
-          const res = await axios.get("http://localhost:8000/api/header", {
-            withCredentials: true,
-          });
-          setName(res.data.user.name);
-        } else {
-          console.log("You are not Authorized");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getName();
-  }, []);
+  const handleLogout=()=>{
+    logOut();
+    navigate("/")
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -179,6 +171,9 @@ const Header = () => {
                 </NavLink>
                 <NavLink to="" className="link2">
                   My Favourites
+                </NavLink>
+                <NavLink className="link2" onClick={handleLogout}>
+                  Log Out
                 </NavLink>
               </div>
             </NavLink>

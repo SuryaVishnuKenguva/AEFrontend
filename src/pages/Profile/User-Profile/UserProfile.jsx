@@ -1,50 +1,92 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./UserProfile.css";
+import { useData } from "../../../Context/DataContext";
 const UserProfile = () => {
+  const [edit,setEdit]=useState(false)
+
+  const {user}=useData()
+
+  const toggleEdit = (field) => {
+    setEdit(!edit);
+  };
+
   return (
     <div className="user-profile">
       <div>
         <div>
           <span>Personal Information</span>
-          <span>Edit</span>
+          <span onClick={()=>toggleEdit()} className="edit-span">
+            {edit ? "Cancel" : "Edit"}
+          </span>
+
         </div>
         <div>
-          <div>
-            <span>Agent Esports</span>
-            <span>Host</span>
-          </div>
-          <div>
-            <span>Your Gender</span>
+          {
+            edit? 
             <div>
-              <input type="radio" name="gender" />
-              <label htmlFor="">Male</label>
-              <input type="radio" name="gender" />
-              <label htmlFor="">Female</label>
+              <div className="input-div">
+              <span>First Name</span>
+              <input
+               type="text"
+                defaultValue={user.firstname}
+                className="edit-mode-input"
+               />
+              </div>
+              <div className="input-div">
+                <span>Last Name</span>
+              <input type="text" defaultValue={user.lastname} className="edit-mode-input"/>
+              </div>
             </div>
+            :
+            <div>
+            <input type="text" defaultValue={user.firstname} readOnly className="hide-mode-input" />
+            <input type="text" defaultValue={user.lastname} readOnly className="hide-mode-input"/>
           </div>
+          }
         </div>
       </div>
       <div>
         <div>
           <span>Email Address</span>
-          <span>Edit</span>
         </div>
         <div>
-          <div>
-            <span>example@gmail.com</span>
+        {
+            edit ? 
+            <div>
+              <input
+               type="text"
+                defaultValue={user.email}
+                className="edit-mode-input"
+               />
+            </div>
+            :
+            <div>
+            <input type="text" defaultValue={user.email} readOnly className="hide-mode-input" />
           </div>
+          }
         </div>
       </div>
       <div>
         <div>
           <span>Mobile Number</span>
-          <span>Edit</span>
         </div>
         <div>
-          <div>
-            <span>9999999999</span>
+        {
+            edit ? 
+            <div>
+              <input
+               type="text"
+                defaultValue={user.mobile}
+                className="edit-mode-input"
+               />
+            </div>
+            :
+            <div>
+            <input type="text" defaultValue={user.mobile} readOnly className="hide-mode-input" />
           </div>
+          }
         </div>
+        <button>Save</button>
       </div>
     </div>
   );
