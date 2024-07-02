@@ -1,7 +1,10 @@
 import React from "react";
-import back1 from "../../assets/back11.jpg";
+import back1 from "../../assets/back.jpg";
 import "./Hero.css";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="Hero">
       <div className="hero">
@@ -16,8 +19,9 @@ const Hero = () => {
             Unleash Your Inner Champion Join the Ultimate Gaming Showdown!
           </span>
           <div>
-            <span>Join Us</span>
-
+            <Link to="Footer" smooth={true}>
+              <span>Join Us</span>
+            </Link>
             <button onClick={() => navigate("/about")}>About Us</button>
           </div>
         </div>
